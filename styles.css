@@ -1,5 +1,4 @@
 @import url(https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&display=swap);
-@import url(https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap);
 
 body {
 	font-family: "Outfit", Arial, sans-serif;
@@ -23,22 +22,24 @@ a:hover {
 	letter-spacing: 0.8px;
 }
 
+/* Animation by Temani Afif */
+/* https://stackoverflow.com/a/65363959/13544771 */
 .title {
-	background: radial-gradient(100% 58% at top, red 99%, green) calc(0 * 100% / 3) 0,
-		radial-gradient(100% 58% at bottom, green 99%, red) calc(3 * 100% / 3) 0,
-		radial-gradient(100% 58% at top, red 99%, green) calc(6 * 100% / 3) 0,
-		radial-gradient(100% 58% at bottom, green 99%, red) calc(9 * 100% / 3) 0;
+	-webkit-text-stroke: 1.4px #409efe;
+	background: radial-gradient(100% 58% at top, #2d3a4b 99%, #409efe) calc(0 * 100% / 3) 0,
+		radial-gradient(100% 58% at bottom, #409efe 99%, #2d3a4b) calc(3 * 100% / 3) 0,
+		radial-gradient(100% 58% at top, #2d3a4b 99%, #409efe) calc(6 * 100% / 3) 0,
+		radial-gradient(100% 58% at bottom, #409efe 99%, #2d3a4b) calc(9 * 100% / 3) 0;
 	background-size: 50% 100%;
 	background-repeat: no-repeat;
 	-webkit-background-clip: text;
 	color: transparent;
-	background-clip: text;
-	display: inline-block;
-	padding: 20px;
-	font-size: xx-large;
+	font-size: 48px;
 	font-family: arial;
 	font-weight: bold;
+	background-clip: text;
 	animation: move 4s infinite linear;
+	text-shadow: 1px 5px 14px rgba(0, 0, 0, 0.35);
 }
 
 @keyframes move {
@@ -46,9 +47,6 @@ a:hover {
 		background-position: calc(-6 * 100% / 3) 0, calc(-3 * 100% / 3) 0, calc(0 * 100% / 3) 0,
 			calc(3 * 100% / 3) 0;
 	}
-}
-
-.bottomText {
 }
 
 #app {
