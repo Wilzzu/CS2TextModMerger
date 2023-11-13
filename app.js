@@ -1,14 +1,73 @@
 const { dialog } = require("@electron/remote");
+const fs = require("fs");
 const path = require("path");
 
 let paths = { lang: null, custom: null };
 
-function showNotification(title, body) {
-	new Notification({ title, body }).show();
-}
+const changeStatus = (status) => {
+	let color = "whitesmoke";
+	const element = document.getElementById("status");
+	element.innerText = status[1];
+
+	switch (status[0]) {
+		case 1:
+			color = "#3fff25";
+			document.getElementById("mergeBtn").disabled = true;
+			break;
+		case 2:
+			color = "#ff4040";
+			break;
+	}
+
+	element.style.color = color;
+	element.style.opacity = "100%";
+};
+
+const removeBracks = (data) => {
+	const first = data.lastIndexOf("}");
+	const second = data.lastIndexOf("}", first - 1);
+
+	return [first, second];
+};
 
 const mergeFiles = () => {
-	console.log("Merge");
+	changeStatus([0, "Merging..."]);
+	// Load custom file
+	const custom = fs.readFileSync(paths.custom, "utf-8", (err) => {
+		if (err) {
+			console.error(err);
+			changeStatus([2, "Error"]);
+			return;
+		}
+	});
+
+	// Load destination file and merge the custom file content to it
+	fs.readFile(paths.lang, "utf-8", (err, data) => {
+		if (err) {
+			console.error(err);
+			changeStatus([2, "Error"]);
+			return;
+		}
+
+		// Find last two curly bracket indexes and delete both of them
+		let indexes = removeBracks(data);
+		const originalWithBracksRemoved =
+			data.substring(0, indexes[1]) + data.substring(indexes[0] + 1);
+
+		// Merge both files and add last two brackets
+		const merged = originalWithBracksRemoved + custom + "\n}}";
+
+		// Overwrite the original file
+		fs.writeFile(paths.lang, merged, "utf8", (err) => {
+			if (err) {
+				console.error(err);
+				changeStatus([2, "Error"]);
+				return;
+			}
+
+			changeStatus([1, "Files successfully merged! You can close the app now."]);
+		});
+	});
 };
 
 const updateElements = (type) => {

@@ -17,7 +17,7 @@ function createWindow() {
 	win = new BrowserWindow({
 		width: 780,
 		height: 700,
-		// autoHideMenuBar: true,
+		autoHideMenuBar: true,
 		webPreferences: { enableRemoteModule: true, nodeIntegration: true, contextIsolation: false },
 	});
 

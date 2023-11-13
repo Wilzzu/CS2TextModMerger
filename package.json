@@ -1,7 +1,7 @@
 {
 	"name": "cs2-text-mod-merger",
-	"version": "0.0.1",
-	"description": "Merge a custom text mod with a language file!",
+	"version": "1.0.0",
+	"description": "Merge your CS2 custom text mod with a language file!",
 	"main": "main.js",
 	"scripts": {
 		"dev": "electron .",
