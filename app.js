@@ -21,6 +21,9 @@ const updateElements = (type) => {
 
 	// Enable merge button if both files are selected
 	if (paths["lang"] && paths["custom"]) {
+		document.querySelectorAll(".wave").forEach((e) => {
+			e.classList.add("animateWave");
+		});
 		document.getElementById("mergeBtn").disabled = false;
 	}
 };

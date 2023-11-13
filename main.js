@@ -15,8 +15,9 @@ let win;
 // Create app
 function createWindow() {
 	win = new BrowserWindow({
-		width: 800,
+		width: 780,
 		height: 700,
+		// autoHideMenuBar: true,
 		webPreferences: { enableRemoteModule: true, nodeIntegration: true, contextIsolation: false },
 	});
 
