@@ -1,0 +1,18 @@
+{
+	"name": "cs2-text-mod-merger",
+	"version": "0.0.1",
+	"description": "Merge a custom text mod with a language file!",
+	"main": "main.js",
+	"scripts": {
+		"dev": "electron .",
+		"start": "electron ."
+	},
+	"keywords": [],
+	"author": "Wilzzu",
+	"license": "ISC",
+	"dependencies": {
+		"@electron/remote": "^2.1.0",
+		"electron": "^27.0.4",
+		"electron-reload": "^2.0.0-alpha.1"
+	}
+}
