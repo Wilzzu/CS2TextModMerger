@@ -1,6 +1,7 @@
 const { dialog } = require("@electron/remote");
 const fs = require("fs");
 const path = require("path");
+const rootPath = require("electron-root-path").rootPath;
 
 let paths = { lang: null, custom: null };
 
@@ -31,12 +32,12 @@ const removeBracks = (data) => {
 };
 
 const mergeFiles = () => {
-	changeStatus([0, "Merging..."]);
+	changeStatus([0, "Tehdään taikoja..."]);
 	// Load custom file
 	const custom = fs.readFileSync(paths.custom, "utf-8", (err) => {
 		if (err) {
 			console.error(err);
-			changeStatus([2, "Error"]);
+			changeStatus([2, "Joku bugi"]);
 			return;
 		}
 	});
@@ -45,7 +46,7 @@ const mergeFiles = () => {
 	fs.readFile(paths.lang, "utf-8", (err, data) => {
 		if (err) {
 			console.error(err);
-			changeStatus([2, "Error"]);
+			changeStatus([2, "Joku bugi"]);
 			return;
 		}
 
@@ -61,11 +62,11 @@ const mergeFiles = () => {
 		fs.writeFile(paths.lang, merged, "utf8", (err) => {
 			if (err) {
 				console.error(err);
-				changeStatus([2, "Error"]);
+				changeStatus([2, "Joku bugi"]);
 				return;
 			}
 
-			changeStatus([1, "Files successfully merged! You can close the app now."]);
+			changeStatus([1, "Uusi tiedosto luotu onnistuneesti! Voit nyt sulkea tämän ohjelman."]);
 		});
 	});
 };
@@ -76,7 +77,7 @@ const updateElements = (type) => {
 	element.innerText = paths[type];
 	element.scrollLeft = element.scrollWidth;
 	element.scrollLeft = element.scrollWidth;
-	document.getElementById(type + "Btn").innerText = "Change";
+	document.getElementById(type + "Btn").innerText = "Vaihda";
 
 	// Enable merge button if both files are selected
 	if (paths["lang"] && paths["custom"]) {
@@ -89,15 +90,18 @@ const updateElements = (type) => {
 
 // Show file select dialog to user
 const getLocation = async (type) => {
-	const defaultPath = path.join(
+	let defaultPath = path.join(
 		process.env["ProgramFiles(x86)"],
 		"Steam\\steamapps\\common\\Counter-Strike Global Offensive\\game\\csgo\\resource"
 	);
 
+	let ownPath = path.dirname(rootPath);
+	if (type === "Oma") defaultPath = ownPath;
+
 	return dialog
 		.showOpenDialog({
 			defaultPath,
-			buttonLabel: `Select ${type} File`,
+			buttonLabel: `Valitse ${type} tiedosto`,
 			filters: [
 				{ name: "Text Files", extensions: ["txt"] },
 				{ name: "All Files", extensions: ["*"] },
@@ -115,11 +119,11 @@ const selectFile = async (type, text) => {
 };
 
 document.getElementById("langBtn").addEventListener("click", () => {
-	selectFile("lang", "Language");
+	selectFile("lang", "Alkuperäinen");
 });
 
 document.getElementById("customBtn").addEventListener("click", () => {
-	selectFile("custom", "Custom");
+	selectFile("custom", "Oma");
 });
 
 document.getElementById("mergeBtn").addEventListener("click", () => {

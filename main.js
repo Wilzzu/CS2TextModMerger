@@ -3,12 +3,12 @@ require("@electron/remote/main").initialize();
 
 const path = require("path");
 const url = require("url");
-// TODO: Remove electron reload stuff for release
-const electronReload = require("electron-reload");
-electronReload(__dirname, {
-	electron: path.join(__dirname, "node_modules", ".bin", "electron"),
-	hardResetMethod: "exit",
-});
+// Remove electron reload stuff for release
+// const electronReload = require("electron-reload");
+// electronReload(__dirname, {
+// 	electron: path.join(__dirname, "node_modules", ".bin", "electron"),
+// 	hardResetMethod: "exit",
+// });
 
 let win;
 
@@ -17,7 +17,8 @@ function createWindow() {
 	win = new BrowserWindow({
 		width: 780,
 		height: 700,
-		autoHideMenuBar: true,
+		icon: path.join(__dirname, "assets", "icon.ico"),
+		// autoHideMenuBar: true,
 		webPreferences: { enableRemoteModule: true, nodeIntegration: true, contextIsolation: false },
 	});
 

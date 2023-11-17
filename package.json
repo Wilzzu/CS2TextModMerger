@@ -1,11 +1,11 @@
 {
 	"name": "cs2-text-mod-merger",
-	"version": "1.0.0",
+	"version": "0.1.0",
 	"description": "Merge your CS2 custom text mod with a language file!",
 	"main": "main.js",
 	"scripts": {
 		"dev": "electron .",
-		"start": "electron ."
+		"package": "electron-packager . CS2TextModMerger --platform=win32 --arch=x64 --out=release --overwrite --icon=assets/icon.ico --asar=true --prune=true"
 	},
 	"keywords": [],
 	"author": "Wilzzu",
@@ -13,6 +13,10 @@
 	"dependencies": {
 		"@electron/remote": "^2.1.0",
 		"electron": "^27.0.4",
+		"electron-root-path": "^1.1.0"
+	},
+	"devDependencies": {
+		"electron-packager": "^17.1.2",
 		"electron-reload": "^2.0.0-alpha.1"
 	}
 }
