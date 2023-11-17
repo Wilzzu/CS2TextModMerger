@@ -35,7 +35,7 @@ a:hover {
 
 /* Animation by Temani Afif */
 /* https://stackoverflow.com/a/65363959/13544771 */
-.title {
+#title {
 	-webkit-text-stroke: 1.4px #409efe;
 	background: radial-gradient(100% 58% at top, #2d3a4b 99%, #409efe) calc(0 * 100% / 3) 0,
 		radial-gradient(100% 58% at bottom, #409efe 99%, #2d3a4b) calc(3 * 100% / 3) 0,
@@ -51,6 +51,7 @@ a:hover {
 	background-clip: text;
 	animation: move 4s infinite linear;
 	text-shadow: 1px 5px 14px #a0cfff3d;
+	user-select: none;
 }
 
 @keyframes move {
@@ -123,6 +124,10 @@ a:hover {
 	color: whitesmoke;
 	margin: -14px 0 0 0;
 	transition-duration: 500ms;
+}
+
+audio {
+	display: none;
 }
 
 /* width */

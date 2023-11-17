@@ -1,6 +1,6 @@
 {
 	"name": "cs2-text-mod-merger",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"description": "Merge your CS2 custom text mod with a language file!",
 	"main": "main.js",
 	"scripts": {

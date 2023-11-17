@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>CS2 Amogus v2</title>
+		<title>CS2 Amogus v1.2</title>
 		<link rel="stylesheet" type="text/css" href="styles.css" />
 	</head>
 	<body>
 		<div id="app">
-			<h1 class="title">CS2 Amogus v2</h1>
+			<h1 id="title" onclick="">CS2 Amogus v1.2</h1>
 
 			<div class="item">
-				<p class="containerTitle">Alkuperäinen tiedosto (csgo_finnish):</p>
+				<p class="containerTitle">Alkuperäinen tiedosto (csgo_finnish.txt):</p>
 				<div class="selectContainer">
-					<p id="langText">Valitse alkuperäinen tiedosto (csgo_finnish)...</p>
+					<p id="langText">Valitse alkuperäinen tiedosto (csgo_finnish.txt)...</p>
 					<button id="langBtn" class="selectBtn">Valitse</button>
 				</div>
 			</div>
 			<div class="item">
-				<p class="containerTitle">Oma tiedosto (csgo_mato2):</p>
+				<p class="containerTitle">Oma tiedosto (csgo_mato2.txt):</p>
 				<div class="selectContainer">
-					<p id="customText">Valitse oma tiedosto (csgo_mato2)...</p>
+					<p id="customText">Valitse oma tiedosto (csgo_mato2.txt)...</p>
 					<button id="customBtn" class="selectBtn">Valitse</button>
 				</div>
 			</div>
@@ -35,6 +35,15 @@
 				Made with 💙 by
 				<a href="https://github.com/wilzzu" target="_blank" rel="noreferrer">Wilzzu</a>
 			</p>
+			<audio id="audiowarn" controls>
+				<source src="assets/warning.mp3" type="audio/mp3" />
+			</audio>
+			<audio id="audiosucc" controls>
+				<source src="assets/success.mp3" type="audio/mp3" />
+			</audio>
+			<audio id="audiobg" controls>
+				<source src="assets/bg.mp3" type="audio/mp3" />
+			</audio>
 		</div>
 
 		<script src="app.js"></script>

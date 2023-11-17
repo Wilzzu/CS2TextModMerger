@@ -15,10 +15,11 @@ let win;
 // Create app
 function createWindow() {
 	win = new BrowserWindow({
+		// width: 1200,
 		width: 780,
 		height: 700,
 		icon: path.join(__dirname, "assets", "icon.ico"),
-		// autoHideMenuBar: true,
+		autoHideMenuBar: true,
 		webPreferences: { enableRemoteModule: true, nodeIntegration: true, contextIsolation: false },
 	});
 
