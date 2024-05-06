@@ -39,14 +39,14 @@ const validateFile = async () => {
 	originalFile = fs.readFileSync(paths.lang, "utf-8", async (err) => {
 		if (err) {
 			console.error(err);
-			changeStatus([2, "Joku bugi"]);
+			changeStatus([2, "An error occurred while reading the file."]);
 			return;
 		}
 	});
 
 	// Check if the file was already modified
 	if (originalFile.indexOf("//Patched by Wilzzu") > 0) {
-		changeStatus([2, "Tiedosto on jo muutettu, jos muutat sen uudelleen se saattaa hajota!"]);
+		changeStatus([2, "File has already been modified, if you modify it again it might break!"]);
 		alreadyPatched = true;
 		warningAudio.play();
 	} else changeStatus([9, "-"]);
@@ -61,19 +61,19 @@ const findBracks = (data) => {
 
 const mergeFiles = () => {
 	if (alreadyPatched) {
-		changeStatus([2, "Ootko nyt ihan varma bro?"]);
+		changeStatus([2, "Are you sure you want to modify the file again?"]);
 		alreadyPatched = false;
 		warningAudio.play();
 		return;
 	}
 
-	changeStatus([0, "Tehdään taikoja..."]);
+	changeStatus([0, "Merging files..."]);
 
 	// Load custom file and merge it with the original
 	fs.readFile(paths.custom, "utf-8", (err, data) => {
 		if (err) {
 			console.error(err);
-			changeStatus([2, "Joku bugi"]);
+			changeStatus([2, "An error occurred while reading the file."]);
 			return;
 		}
 
@@ -89,11 +89,11 @@ const mergeFiles = () => {
 		fs.writeFile(paths.lang, merged, "utf8", (err) => {
 			if (err) {
 				console.error(err);
-				changeStatus([2, "Joku bugi"]);
+				changeStatus([2, "An error occurred while writing the file."]);
 				return;
 			}
 
-			changeStatus([1, "Uusi tiedosto luotu! Voit nyt sulkea tämän ohjelman ja käynnistää CS2."]);
+			changeStatus([1, "Files successfully merged! You can close the app now."]);
 			alreadyPatched = true;
 			successAudio.play();
 		});
@@ -106,7 +106,7 @@ const updateElements = (type) => {
 	element.innerText = paths[type];
 	element.scrollLeft = element.scrollWidth;
 	element.scrollLeft = element.scrollWidth;
-	document.getElementById(type + "Btn").innerText = "Vaihda";
+	document.getElementById(type + "Btn").innerText = "Change";
 
 	// Enable merge button if both files are selected
 	if (paths["lang"] && paths["custom"]) {
@@ -130,7 +130,7 @@ const getLocation = async (type, text) => {
 	return dialog
 		.showOpenDialog({
 			defaultPath,
-			buttonLabel: `Valitse ${text} tiedosto`,
+			buttonLabel: `Select ${text} file`,
 			filters: [
 				{ name: "Text Files", extensions: ["txt"] },
 				{ name: "All Files", extensions: ["*"] },
@@ -149,11 +149,11 @@ const selectFile = async (type, text) => {
 };
 
 document.getElementById("langBtn").addEventListener("click", () => {
-	selectFile("lang", "Alkuperäinen");
+	selectFile("lang", "Original");
 });
 
 document.getElementById("customBtn").addEventListener("click", () => {
-	selectFile("custom", "Oma");
+	selectFile("custom", "Text mod");
 });
 
 document.getElementById("mergeBtn").addEventListener("click", () => {
