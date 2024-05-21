@@ -48,10 +48,10 @@ CS2TextModMerger was created to help merging modded text files with Counter-Stri
 
 ```txt
 // UI
-	"match_ready_accept"								"ACCEPT MATCH"
-    "SFUI_Lobby_MatchReadyButton"						"ACCEPT MATCH"
-	"WinPanel_RoundWon"									"ROUND WON"
-	"WinPanel_RoundLost"								"ROUND LOST"
+    "match_ready_accept"				"ACCEPT MATCH"
+    "SFUI_Lobby_MatchReadyButton"			"ACCEPT MATCH"
+    "WinPanel_RoundWon"					"ROUND WON"
+    "WinPanel_RoundLost"				"ROUND LOST"
 
 // Alerts
     "Cstrike_TitlesTXT_Bomb_Defused"                    "Bomb defused"
