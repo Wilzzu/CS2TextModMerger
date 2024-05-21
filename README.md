@@ -1,4 +1,4 @@
-![Banner](https://i.imgur.com/Lsh8BCq.png)
+![Banner](https://i.imgur.com/CMYuCMP.png)
 
 <h1 align="center">CS2 Text Mod Merger</h1>
 
