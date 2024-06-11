@@ -11,6 +11,8 @@
 
 CS2TextModMerger was created to help merging modded text files with Counter-Strike 2's original language files. This allows you to use your custom strings with any of the game's language files, not just the English one. You will need to run this app every time the game's language files are updated, as the modded text files will be overwritten. Thankfully this process is quick and easy!
 
+![Screenshots](https://i.imgur.com/43AoblB.png)
+
 ## Usage
 
 1. Download the latest release from the [Releases](https://github.com/Wilzzu/CS2TextModMerger/releases/latest) page.
